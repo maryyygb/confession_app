@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+div.orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+
+}
+
+div.orb1 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(red, orange);
+  border-radius: 20rem;
+
+  position: absolute;
+  top: -5rem;
+  right: -5rem;
+  filter: blur(15rem)
+}
+
+div.orb4 {
+  width: 190px;
+  height: 190px;
+  background: linear-gradient(blue, violet);
+  border-radius: 20rem;
+
+  position: absolute;
+  top: -5rem;
+  right: 20rem;
+  filter: blur(13rem)
+
+}
+
+div.orb2 {
+  width: 250px;
+  height: 250px;
+  background: linear-gradient(red, orange);
+  border-radius: 20rem;
+
+  position: absolute;
+  top: 600px;
+  right: 500px;
+
+  filter: blur(15rem)
+}
+
+div.orb3 {
+  width: 190px;
+  height: 190px;
+  background: linear-gradient(violet, blue);
+  border-radius: 20rem;
+
+  position: absolute;
+  top: 600px;
+  right: 90px;
+
+  filter: blur(13rem)
+}
+
+div.orb5 {
+  width: 200px;
+  height: 200px;
+  background: linear-gradient(violet, blue);
+  border-radius: 20rem;
+
+  position: absolute;
+  bottom: 38rem;
+  right: -59rem;
+
+  filter: blur(11rem)
+}
+
+div.orb6 {
+  width: 195px;
+  height: 195px;
+  background: linear-gradient(blue, violet);
+  border-radius: 20rem;
+
+  position: absolute;
+  top: 0px;
+  right: 90rem;
+
+  filter: blur(13rem)
+}
+
+/* div.container::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 50vh;
+  border: linear-gradient(to-left, white, gray);
+} */
+
+div.container {
+  background: rgba(136, 43, 43, 0.205);
+  width: 600px;
+  height: 40vh;
+  border-radius: 1rem;
+
+  position: relative;
+  color: #756666;
+}
+
+div.card {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+}
+
+div.deco {
+  margin-top: 2rem;
+  letter-spacing: 1.9rem;
+  font-size: 1.1rem;
+}
+
+div.greetings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1.greeting-message {
+  margin-top: 3rem;
+  font-style: italic;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+}
+
+p.askingName {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 350px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+input.name_input {
+  background: rgba(99, 61, 61, 0.267);
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  border: .3px solid #f5f5f536;
+  outline: none;
+  color: gray;
+  text-align: center;
+}
+
+button.verify_btn {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: gray;
+  background: rgba(58, 38, 38, 0.692);
+  margin-top: 1rem;
+  width: 100%;
+  border: .5px solid #f5f5f536;
+  cursor: not-allowed;
+}
+
+button.verified {
+  cursor: pointer;
+}
+
+button.verified:hover {
+  background: rgba(92, 48, 48, 0.781);
+}
+
+p.not_error {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #f5f5f575;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+p.yes_error {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  color: #f5f5f575;
+  font-style: italic;
+  letter-spacing: 2px;
+}
+
+/* AGREEMENT PAGE */
+div.card_ag {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 100%;
+  border-radius: 1.1rem;
+}
+
+div.deco_ag {
+  margin-top: 2rem;
+}
+
+h1.agreement_title {
+  font-style: italic;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
