@@ -18,13 +18,6 @@ function Home() {
         console.log(access);
     }
 
-    // if(access == true) {
-    //         const btn = document.getElementsByClassName(".verify_btn");
-
-    //         btn.style.background = "rgba(99, 61, 61, 0.267)";
-    //         btn.style.cursor = "pointer";
-    //     }
-
     const just = () => {
         console.log("This one says it match the name")
     }
@@ -49,7 +42,7 @@ function Home() {
                 <input className="name_input" type="text" placeholder="type your name here" value={userName} onChange={handleVerification} />
 
                 <button
-                    className={`verify_btn ${access ? 'verified' : ''}`}
+                    className={`verify_btn ${access ? 'verified' : 'not_verified'}`}
                     disabled={!access}
                     onClick={just}
                 >

@@ -118,7 +118,7 @@ div.orb6 {
 div.container {
   background: rgba(136, 43, 43, 0.205);
   width: 600px;
-  height: 40vh;
+  height: 550px;
   border-radius: 1rem;
 
   position: relative;
@@ -182,19 +182,23 @@ button.verify_btn {
   padding: 1rem;
   border-radius: 1rem;
   color: gray;
-  background: rgba(58, 38, 38, 0.692);
   margin-top: 1rem;
   width: 100%;
   border: .5px solid #f5f5f536;
-  cursor: not-allowed;
 }
 
 button.verified {
   cursor: pointer;
+  background: rgba(99, 61, 61, 0.267);
 }
 
 button.verified:hover {
   background: rgba(92, 48, 48, 0.781);
+}
+
+button.not_verified {
+  background: rgba(56, 36, 36, 0.692);
+  cursor: not-allowed;
 }
 
 p.not_error {
@@ -218,16 +222,172 @@ div.card_ag {
   display: flex;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   height: 100%;
   border-radius: 1.1rem;
 }
 
 div.deco_ag {
   margin-top: 2rem;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 h1.agreement_title {
   font-style: italic;
   margin-top: 2rem;
   font-size: 2.5rem;
+}
+
+div.ag_con {
+  height: 810px;
+}
+
+p.userName {
+  font-style: italic;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgba(146, 21, 21, 0.938);
+}
+
+p.ag_reminder_one {
+  font-size: 1.1rem;
+  text-align: justify;
+  text-align: center;
+  margin-top: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+p.ag_reminder_two {
+  font-size: 1.1rem;
+  text-align: justify;
+  text-align: center;
+  margin-top: .5rem;
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+}
+
+/* TERMS */
+
+ul.terms {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: justify;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+}
+
+li.term {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  width: 80%;
+  height: auto;
+  list-style: none;
+
+  border: 1px solid #f5f5f51a;
+  border-radius: 10px;
+  padding: 1rem 1.5rem 1rem 1rem;
+
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+li.term:hover {
+  background: rgba(75, 36, 36, 0.342);
+}
+
+.term.agreed {
+  background: rgba(75, 36, 36, 0.342);
+  opacity: 1;
+}
+
+.term.not_agreed {
+  opacity: .6;
+}
+
+p.checkbox {
+  cursor: pointer;
+}
+
+.heart_i {
+  flex-shrink: 0;
+  font-size: 1.7rem;
+}
+
+p.conditions {
+  line-height: 1.5rem;
+}
+
+button.verify_btn_ag {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: .8rem;
+  color: gray;
+  margin-top: 1.5rem;
+  width: 80%;
+  border: .5px solid #49191936;
+}
+
+.verify_btn_ag.not_verified {
+  color: rgba(128, 128, 128, 0.548);
+  background: rgba(58, 32, 32, 0.342);
+}
+
+.verify_btn_ag.verified {
+  border: 1px solid #b9b9b91c;
+}
+
+/* REMINDER PAGE*/
+div.reminder_con {
+  color: #f5f5f59d;
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 2px;
+
+  text-align: center;
+  position: relative
+}
+
+div.my_notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+div.show_first {
+  text-align: center;
+}
+
+h1.header {
+  margin-top: 2rem;
+}
+
+p.m1 {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+  color: rgb(141, 74, 74);
+  font-weight: 600;
+}
+
+div.show_sec p {
+  text-align: center;
+  width: 650px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top: 2rem;
 }
