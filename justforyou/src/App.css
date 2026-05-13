@@ -375,11 +375,12 @@ div.show_first {
 
 h1.header {
   margin-top: 2rem;
+  width: 600px;
 }
 
 p.m1 {
   margin-top: 2rem;
-  font-size: 1.8rem;
+  font-size: 2.1rem;
   color: rgb(141, 74, 74);
   font-weight: 600;
 }
@@ -390,4 +391,85 @@ div.show_sec p {
   font-size: 2rem;
   letter-spacing: 1px;
   margin-top: 2rem;
+}
+
+.header {
+  transition: all .3s ease-in-out;
+}
+
+/* Core alignment container wrapper */
+.my_notes {
+  position: relative;
+  min-height: 250px; /* Reserves screen area so layout doesn't crash */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.show_sec {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* Forces text sections to cleanly overlay in the center */
+.show_first, .show_sec {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Core animation transition properties */
+.note-fade {
+  width: 600px;
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.8s;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(15px);
+  white-space: normal; /* Permits text rows to wrap safely naturally */
+}
+
+/* Active State: Slides softly up into clear focus */
+.note-fade.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  visibility: visible;
+}
+
+/* Exit State: Drifts softly upwards out of sight */
+.note-fade.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(-15px);
+  visibility: hidden;
+}
+
+button.enter_room {
+  background-color: rgb(141, 74, 74); /* Example pink tone; customize to match theme palette */
+  color: white;
+  border: none;
+  padding: 1.5rem 30px;
+  font-size: 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.3);
+  width: 300px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+/* Optional hover polish glow */
+button.enter_room:hover {
+  transform: translate(-50%, -50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(255, 75, 114, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
