@@ -5,6 +5,7 @@ import './App.css'
 import Home from "./Home"
 import Agreement from './Agreement';
 import Reminder from './Reminder';
+import ChatRoom from './ChatRoom';
 
 function App() {
 
@@ -12,7 +13,8 @@ function App() {
     <>
         {/* <Home/> */}
         {/* <Agreement/> */}
-        <Reminder/>
+        {/* <Reminder/> */}
+        <ChatRoom/>
     </>
   )
 }
