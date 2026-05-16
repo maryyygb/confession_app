@@ -473,3 +473,123 @@ button.enter_room:hover {
   box-shadow: 0 6px 20px rgba(255, 75, 114, 0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* CHAT ROOM */
+
+div.chatroom_box {
+  max-width: 70%;
+  min-width: 800px;
+  height: 1000px;
+  background-color: rgba(141, 74, 74, 0.137);
+  border-radius: 1rem;
+  position: relative;
+  box-shadow: 1px 1px 18px hsla(0, 0%, 100%, 0.212);
+}
+
+div.croom_orbs {
+  position: absolute;
+  height: 1000px;
+  border-radius: 1rem;
+}
+
+nav {
+  padding: 1rem;
+  box-shadow: 1px 1px 18px hsla(0, 0%, 37%, 0.212);
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  gap: 1rem;
+  padding: 0 .5rem;
+}
+
+li.nav-items {
+  list-style: none;
+}
+
+li:first-child {
+  background: rgba(36, 7, 7, 0.767);
+  border: .5px solid hsla(0, 88%, 23%, 0.795);
+  border-radius: 50%;
+  padding: .9rem 1.2rem;
+}
+
+p.me {
+  font-size: 1.5rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 1px rgb(49, 11, 11);
+}
+
+p.my_status {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: hsla(0, 47%, 39%, 0.788);
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem;
+  width: 100%;
+}
+
+
+input.chat_input {
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  outline: none;
+  border: none;
+  padding: 1.2rem;
+  color: rgba(114, 76, 76, 0.856);
+  background: rgba(36, 7, 7, 0.767);
+    border: .5px solid hsla(0, 83%, 19%, 0.795);
+  flex-grow: 1;
+}
+
+input.chat_input:focus {
+  background: rgba(53, 11, 11, 0.767);
+  color: rgba(121, 78, 78, 0.856);
+}
+
+input.chat_input::placeholder {
+  color: rgba(131, 93, 93, 0.726);
+
+}
+
+button.chat_send_disabled {
+  padding: .8rem 1.45rem 1.2rem 1.45rem;
+  font-size: 1.2rem;
+  border-radius: 100%;
+  cursor: pointer;
+  background: rgba(36, 7, 7, 0.767);
+  border: .5px solid hsla(0, 80%, 12%, 0.795);
+  font-weight: 800;
+  cursor: not-allowed;
+}
+
+button.chat_send {
+  padding: .8rem 1.45rem 1.2rem 1.45rem;
+  font-size: 1.2rem;
+  border-radius: 100%;
+  cursor: pointer;
+  background: rgba(36, 7, 7, 0.767);
+  border: .5px solid hsla(0, 83%, 19%, 0.795);
+  color: white;
+  font-weight: 800;
+}
+
+button.chat_send:hover {
+  background: rgba(61, 13, 13, 0.767);
+  border: .5px solid hsla(0, 88%, 23%, 0.795);
+  color: #f5f5f5;
+}
