@@ -4,12 +4,13 @@ import gsap from "gsap";
 
 const ChatRoom = () => {
 
-  const [messages, setMessages] = useState([]);
-  const [msg, setMsg] = useState(null);
+  const [messages, setMessages] = useState(["Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there"]);
+  const [msg, setMsg] = useState("");
 
   const tl = gsap.timeline();
 
   useGSAP(() => {
+
     tl.fromTo('.chatroom_box', {
       y: 550,
       duration: 1.5, 
@@ -55,8 +56,26 @@ const ChatRoom = () => {
     })
 
   }, [])
+
+  // useGSAP(() => {
+  //   gsap.fromTo('.his_msg', {
+  //     y: 1000,
+  //     opacity: 0,
+  //     duration: .5,
+  //     ease: 'power2'
+  //   }, {
+  //     y: 1,
+  //     opacity: 1,
+  //     duration: .5,
+  //     ease: 'power1'
+  //   })
+  // }, [])
   
 
+  const handleSendMsg = () => {
+    msg != "" && setMessages(m => [...m, msg])
+    setMsg("")
+  }
 
 
   return (
@@ -88,10 +107,9 @@ const ChatRoom = () => {
 
         <footer className="input_message">
           <input className="chat_input" placeholder="type your message here" type="text" value={msg} onChange={(e) => setMsg(e.target.value)}/>
-          <button className={msg ? "chat_send" : "chat_send_disabled"} type="submit" onClick={() => {
-            setMessages(m => [...m, msg]);
-            setMsg("");
-            }}>↑</button>
+          <button className="chat_send" type="submit" onClick={() => handleSendMsg()}
+            disabled={msg == ""}
+            >↑</button>
         </footer>
     </div>
   )
