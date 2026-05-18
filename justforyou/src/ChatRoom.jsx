@@ -4,6 +4,9 @@ import gsap from "gsap";
 
 const ChatRoom = () => {
 
+  const [messages, setMessages] = useState([]);
+  const [msg, setMsg] = useState(null);
+
   const tl = gsap.timeline();
 
   useGSAP(() => {
@@ -55,7 +58,6 @@ const ChatRoom = () => {
   
 
 
-  const [message, setMessage] = useState(null);
 
   return (
     <div className="chatroom_box">
@@ -78,9 +80,18 @@ const ChatRoom = () => {
           </ul>
         </nav>
 
+        <div className="body">
+          <ul className="msg_container">
+            {messages.map((msg, id) => <li className="his_msg" key={id}>{msg}</li>)}
+          </ul>
+        </div>
+
         <footer className="input_message">
-          <input className="chat_input" placeholder="type your message here" type="text" value={message} onChange={(e) => setMessage(e.target.value)}/>
-          <button className={message ? "chat_send" : "chat_send_disabled"} type="submit">↑</button>
+          <input className="chat_input" placeholder="type your message here" type="text" value={msg} onChange={(e) => setMsg(e.target.value)}/>
+          <button className={msg ? "chat_send" : "chat_send_disabled"} type="submit" onClick={() => {
+            setMessages(m => [...m, msg]);
+            setMsg("");
+            }}>↑</button>
         </footer>
     </div>
   )
