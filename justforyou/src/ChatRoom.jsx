@@ -1,8 +1,58 @@
-import React, { useState } from 'react';
-import {gsap} from 'gsap';
+import { useState } from 'react';
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 const ChatRoom = () => {
 
+  const tl = gsap.timeline();
+
+  useGSAP(() => {
+    tl.fromTo('.chatroom_box', {
+      y: 550,
+      duration: 1.5, 
+      opacity: 0,
+      ease: 'power1.inOut'
+    },
+    {
+      y: 10,
+      opacity: 1,
+      duration: 1.5,
+      ease: 'power1.inOut',
+    })
+
+    tl.fromTo('.me', {
+      opacity: 0,
+      ease: 'power1.inOut',
+      duration: 1.5,
+      delay: 1,
+    },
+    {
+      opacity: 1,
+      ease: 'power1.inOut',
+      duration: 1.5,
+    })
+
+    tl.fromTo('.my_status', {
+      opacity: 0,
+      ease: 'power1.inOut',
+      duration: .5,
+    },
+    {
+      opacity: 1,
+      duration: .5,
+    })
+
+    tl.fromTo('.input_message', {
+      opacity: 0,
+      ease: 'back.inOut',
+      duration: .5
+    }, {
+      opacity: 1,
+      duration: .5
+    })
+
+  }, [])
+  
 
 
   const [message, setMessage] = useState(null);
@@ -28,7 +78,7 @@ const ChatRoom = () => {
           </ul>
         </nav>
 
-        <footer>
+        <footer className="input_message">
           <input className="chat_input" placeholder="type your message here" type="text" value={message} onChange={(e) => setMessage(e.target.value)}/>
           <button className={message ? "chat_send" : "chat_send_disabled"} type="submit">↑</button>
         </footer>

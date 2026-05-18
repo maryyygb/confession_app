@@ -584,7 +584,7 @@ button.chat_send {
   cursor: pointer;
   background: rgba(36, 7, 7, 0.767);
   border: .5px solid hsla(0, 83%, 19%, 0.795);
-  color: white;
+  color: rgb(189, 120, 120);
   font-weight: 800;
 }
 
