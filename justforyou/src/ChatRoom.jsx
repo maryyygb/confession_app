@@ -1,82 +1,40 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const ChatRoom = () => {
 
-  const [messages, setMessages] = useState(["Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there", "Hi, there"]);
+  // const [messages, setMessages] = useState(["Hi, there", "Hi, there"]);
+  const [m, setM] = useState([
+                  {id: 0, message: "Hi, there!"},
+                  {id: 1, message: "What's up?"}, 
+                  {id: 0, message: "What are you doing?"}, {id: 0, message: "Are you free tonight?"}, {id: 0, message: "I was just asking, haha"}])
   const [msg, setMsg] = useState("");
 
-  const tl = gsap.timeline();
+
 
   useGSAP(() => {
+    const tl = gsap.timeline();
 
-    tl.fromTo('.chatroom_box', {
-      y: 550,
-      duration: 1.5, 
+    tl.from(".chatroom_box", {
+      y: 300,
       opacity: 0,
-      ease: 'power1.inOut'
-    },
-    {
-      y: 10,
-      opacity: 1,
-      duration: 1.5,
-      ease: 'power1.inOut',
+      duration: 2,
+      ease: 'power1'
     })
 
-    tl.fromTo('.me', {
-      opacity: 0,
-      ease: 'power1.inOut',
-      duration: 1.5,
-      delay: 1,
-    },
-    {
-      opacity: 1,
-      ease: 'power1.inOut',
-      duration: 1.5,
-    })
+  })
 
-    tl.fromTo('.my_status', {
-      opacity: 0,
-      ease: 'power1.inOut',
-      duration: .5,
-    },
-    {
-      opacity: 1,
-      duration: .5,
-    })
-
-    tl.fromTo('.input_message', {
-      opacity: 0,
-      ease: 'back.inOut',
-      duration: .5
-    }, {
-      opacity: 1,
-      duration: .5
-    })
-
-  }, [])
-
-  // useGSAP(() => {
-  //   gsap.fromTo('.his_msg', {
-  //     y: 1000,
-  //     opacity: 0,
-  //     duration: .5,
-  //     ease: 'power2'
-  //   }, {
-  //     y: 1,
-  //     opacity: 1,
-  //     duration: .5,
-  //     ease: 'power1'
-  //   })
-  // }, [])
-  
+  // will receive the message
+  // store to the container each with unique var
+  // then check if it came from whom, assign ID
+  // then add that to the object list
 
   const handleSendMsg = () => {
-    msg != "" && setMessages(m => [...m, msg])
+    // msg != "" && setMessages(m => [...m, msg])
+    msg != "" && setM(m => [...m, {id: 1, message: msg}]);
     setMsg("")
   }
-
 
   return (
     <div className="chatroom_box">
@@ -101,13 +59,22 @@ const ChatRoom = () => {
 
         <div className="body">
           <ul className="msg_container">
-            {messages.map((msg, id) => <li className="his_msg" key={id}>{msg}</li>)}
+            {/* {messages.map((msg, id) => <li className="his_msg" key={id}>{msg}</li>)} */}
+            {
+              m.map((m, i) => {
+                if(m.id == 1) {
+                  return <li className="his_msg" key={i}>{m.message}</li>
+                } else {
+                  return <li className="her_msg" key={i}>{m.message}</li>
+                }
+              })
+            }
           </ul>
         </div>
 
         <footer className="input_message">
           <input className="chat_input" placeholder="type your message here" type="text" value={msg} onChange={(e) => setMsg(e.target.value)}/>
-          <button className="chat_send" type="submit" onClick={() => handleSendMsg()}
+          <button className={msg != "" ? "chat_send" : "chat_send_disabled"} type="submit" onClick={() => handleSendMsg()}
             disabled={msg == ""}
             >↑</button>
         </footer>
