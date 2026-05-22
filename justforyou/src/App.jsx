@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import './App.css'
+// import './Chat.css'
 
 import Home from "./Home"
 import Agreement from './Agreement';

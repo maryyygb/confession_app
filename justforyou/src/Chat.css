@@ -1,0 +1,626 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  /* Removed overflow: hidden so users can scroll if your content grows taller than a tiny phone screen */
+  overflow-x: hidden; 
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+
+div.orbs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+/* --- ORBS SECTION --- 
+   Using max() ensures orbs scale down nicely on tiny screens instead of staying massive */
+div.orb1 {
+  width: max(150px, 20vw);
+  height: max(150px, 20vw);
+  background: linear-gradient(red, orange);
+  border-radius: 50%;
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+  filter: blur(8rem);
+}
+
+div.orb4 {
+  width: max(120px, 15vw);
+  height: max(120px, 15vw);
+  background: linear-gradient(blue, violet);
+  border-radius: 50%;
+  position: absolute;
+  top: -2rem;
+  right: 10rem;
+  filter: blur(7rem);
+}
+
+div.orb2 {
+  width: max(150px, 20vw);
+  height: max(150px, 20vw);
+  background: linear-gradient(red, orange);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  filter: blur(8rem);
+}
+
+div.orb3 {
+  width: max(120px, 15vw);
+  height: max(120px, 15vw);
+  background: linear-gradient(violet, blue);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  filter: blur(7rem);
+}
+
+/* Hidden elements that shoot way off-screen cause horizontal layout breaks on mobile */
+div.orb5, div.orb6 {
+  display: none;
+}
+
+/* --- BASE CONTAINERS --- */
+div.container {
+  background: rgba(136, 43, 43, 0.205);
+  width: 90%;            /* Uses fluid width for mobile safety */
+  max-width: 600px;      /* Caps width on desktop to your original design */
+  height: auto;          /* Allows container to expand dynamically with content */
+  min-height: 550px;
+  border-radius: 1rem;
+  position: relative;
+  color: #756666;
+}
+
+div.card {
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+div.deco {
+  margin-top: 2rem;
+  letter-spacing: 1rem;  /* Tightened slightly for small mobile screens */
+  font-size: 1.1rem;
+}
+
+div.greetings {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+h1.greeting-message {
+  margin-top: 3rem;
+  font-style: italic;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  font-weight: 500;
+  text-align: center;
+}
+
+p.askingName {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 100%;          /* Changed from 350px fixed to fluid container padding */
+  max-width: 350px;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+input.name_input {
+  background: rgba(99, 61, 61, 0.267);
+  font-size: 1.2rem;
+  padding: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  border: .3px solid #f5f5f536;
+  outline: none;
+  color: gray;
+  text-align: center;
+}
+
+button.verify_btn {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  color: gray;
+  margin-top: 1rem;
+  width: 100%;
+  border: .5px solid #f5f5f536;
+}
+
+button.verified {
+  cursor: pointer;
+  background: rgba(99, 61, 61, 0.267);
+}
+
+button.verified:hover {
+  background: rgba(92, 48, 48, 0.781);
+}
+
+button.not_verified {
+  background: rgba(56, 36, 36, 0.692);
+  cursor: not-allowed;
+}
+
+p.not_error, p.yes_error {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #f5f5f575;
+  font-style: italic;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* --- AGREEMENT PAGE --- */
+div.card_ag {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  height: 100%;
+  border-radius: 1.1rem;
+  padding: 1rem;
+}
+
+div.deco_ag {
+  margin-top: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+h1.agreement_title {
+  font-style: italic;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+}
+
+div.ag_con {
+  height: auto;
+  min-height: 600px;     /* Changed from rigid 810px to accommodate variable heights */
+  padding-bottom: 2rem;
+}
+
+p.userName {
+  font-style: italic;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgba(146, 21, 21, 0.938);
+}
+
+p.ag_reminder_one, p.ag_reminder_two {
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 1px;
+  padding: 0 1rem;
+}
+
+/* --- TERMS --- */
+ul.terms {
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+li.term {
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  width: 90%;            /* Expanded marginally for better touch interaction targets */
+  height: auto;
+  list-style: none;
+  border: 1px solid #f5f5f51a;
+  border-radius: 10px;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start; /* Kept checkbox left-aligned relative to layout */
+  align-items: center;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+li.term:hover {
+  background: rgba(75, 36, 36, 0.342);
+}
+
+.term.agreed {
+  background: rgba(75, 36, 36, 0.342);
+  opacity: 1;
+}
+
+.term.not_agreed {
+  opacity: .6;
+}
+
+p.checkbox {
+  cursor: pointer;
+}
+
+.heart_i {
+  flex-shrink: 0;
+  font-size: 1.7rem;
+}
+
+p.conditions {
+  line-height: 1.5rem;
+  text-align: left;
+}
+
+button.verify_btn_ag {
+  font-size: 1.2rem;
+  padding: 1rem;
+  border-radius: .8rem;
+  color: gray;
+  margin-top: 1.5rem;
+  width: 90%;
+  border: .5px solid #49191936;
+}
+
+.verify_btn_ag.not_verified {
+  color: rgba(128, 128, 128, 0.548);
+  background: rgba(58, 32, 32, 0.342);
+}
+
+.verify_btn_ag.verified {
+  border: 1px solid #b9b9b91c;
+}
+
+/* --- REMINDER PAGE --- */
+div.reminder_con {
+  color: #f5f5f59d;
+  font-size: 1.5rem;
+  font-style: italic;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  width: 90%;
+}
+
+div.my_notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  min-height: 250px;
+  text-align: center;
+  width: 100%;
+}
+
+h1.header {
+  margin-top: 2rem;
+  width: 100%;          /* Changed from 600px fixed to dynamic flow scaling */
+  max-width: 600px;
+}
+
+p.m1 {
+  margin-top: 2rem;
+  font-size: 2.1rem;
+  color: rgb(141, 74, 74);
+  font-weight: 600;
+}
+
+div.show_sec p {
+  text-align: center;
+  width: 100%;          /* Changed from 650px fixed */
+  max-width: 650px;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-top: 2rem;
+}
+
+.header {
+  transition: all .3s ease-in-out;
+}
+
+.show_sec {
+  font-size: 2.5rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.show_first, .show_sec {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.note-fade {
+  width: 100%;          /* Changed from 600px fixed */
+  max-width: 600px;
+  opacity: 0;
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.8s;
+  visibility: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) translateY(15px);
+  white-space: normal;
+  padding: 0 1rem;
+}
+
+.note-fade.visible {
+  opacity: 1;
+  transform: translate(-50%, -50%) translateY(0);
+  visibility: visible;
+}
+
+.note-fade.hidden {
+  opacity: 0;
+  transform: translate(-50%, -50%) translateY(-15px);
+  visibility: hidden;
+}
+
+button.enter_room {
+  background-color: rgb(141, 74, 74);
+  color: white;
+  border: none;
+  padding: 1.2rem 30px;
+  font-size: 1.8rem;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(255, 75, 114, 0.3);
+  width: 100%;          /* Changed to safely scale within parent constraints */
+  max-width: 300px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+button.enter_room:hover {
+  transform: scale(1.05); /* Fixed the offset collision with translate center context */
+  box-shadow: 0 6px 20px rgba(255, 75, 114, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* --- CHAT ROOM CONTAINER --- */
+div.chatroom_box {
+  width: 95%;            /* Fluid window configuration for small viewports */
+  max-width: 800px;      /* Desktop ceiling cap matching original layout targets */
+  min-width: 0;          /* REMOVED min-width: 800px; which completely broke phone viewports */
+  height: 90vh;          /* Changed from fixed 1000px to adapt smoothly to screen heights */
+  background-color: rgba(141, 74, 74, 0.137);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column; /* Organizes layout layers natively */
+  position: relative;
+  box-shadow: 1px 1px 18px hsla(0, 0%, 100%, 0.212);
+  overflow: hidden;
+}
+
+div.croom_orbs {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  z-index: -1;
+}
+
+nav {
+  padding: 1rem;
+  box-shadow: 1px 1px 18px hsla(0, 0%, 37%, 0.212);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+nav > ul {
+  display: flex;
+  align-items: center;
+  color: #f5f5f5;
+  gap: 1rem;
+  padding: 0 .5rem;
+}
+
+li.nav-items {
+  list-style: none;
+}
+
+li.nav-items:first-child {
+  background: rgba(36, 7, 7, 0.767);
+  border: .5px solid hsla(0, 88%, 23%, 0.795);
+  border-radius: 50%;
+  padding: .6rem .9rem;  /* Streamlined sizes for micro header real estate */
+}
+
+p.me {
+  font-size: 1.3rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 1px rgb(49, 11, 11);
+}
+
+p.my_status {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-style: italic;
+  color: hsla(0, 47%, 39%, 0.788);
+}
+
+/* --- CHAT BODY --- */
+div.body {
+  flex-grow: 1;
+  padding: 1rem;        /* Reduced padding targets to buy space for bubbles */
+  height: calc(100% - 140px); /* Let it fill the box instead of using raw 830px */
+  overflow-y: auto;
+}
+
+.body::-webkit-scrollbar {
+  width: 2px;
+}
+
+ul.msg_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+li.his_msg, li.her_msg {
+  width: fit-content;
+  max-width: 85%;       /* Gives bubbles more structural flex room on phones */
+  padding: 0.8rem 1.2rem;
+  border-radius: 1.5rem;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1rem;      /* Softly dropped text sizes for small displays */
+  border: .5px solid hsla(0, 56%, 28%, 0.795);
+  line-height: 1.4rem;
+}
+
+li.his_msg {
+  align-self: flex-end;
+  background: hsla(0, 45%, 24%, 0.349);
+  color: rgba(223, 196, 196, 0.767);
+  border-bottom-right-radius: 0.3rem; /* Stylized modern tail design detail */
+}
+
+li.her_msg {
+  align-self: flex-start;
+  background: hsla(0, 30%, 15%, 0.5);
+  color: rgba(223, 196, 196, 0.767);
+  border-bottom-left-radius: 0.3rem;
+}
+
+/* --- FOOTER INPUT BAR --- */
+footer {
+  position: relative;   /* Changed from absolute so it locks neatly to container framework grids */
+  bottom: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(15, 5, 5, 0.8);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .8rem;
+  width: 100%;
+}
+
+input.chat_input {
+  border-radius: 2rem;
+  font-size: 1rem;      /* Changed from 1.2rem to stop mobile Safari from auto-zooming window */
+  outline: none;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  color: rgba(114, 76, 76, 0.856);
+  background: rgba(36, 7, 7, 0.767);
+  border: .5px solid hsla(0, 83%, 19%, 0.795);
+  flex-grow: 1;
+}
+
+input.chat_input:focus {
+  background: rgba(53, 11, 11, 0.767);
+  color: rgba(223, 196, 196, 0.767);
+}
+
+input.chat_input::placeholder {
+  color: rgba(131, 93, 93, 0.726);
+}
+
+button.chat_send_disabled, button.chat_send {
+  padding: 0.8rem 1.2rem; /* Normalized button tracking space constraints */
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: .5px solid hsla(0, 83%, 19%, 0.795);
+  font-weight: 800;
+}
+
+button.chat_send_disabled {
+  background: rgba(36, 7, 7, 0.767);
+  color: rgba(128, 128, 128, 0.4);
+}
+
+button.chat_send {
+  background: rgba(53, 11, 11, 0.767);
+  color: rgb(189, 120, 120);
+}
+
+button.chat_send:hover {
+  background: rgba(61, 13, 13, 0.767);
+  border: .5px solid hsla(0, 88%, 23%, 0.795);
+  color: #f5f5f5;
+}
+
+/* ==========================================================================
+   MOBILE MEDIA QUERY
+   This layer activates automatically on devices with screens 480px wide or less
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+  h1.greeting-message {
+    font-size: 2.2rem;  /* Scaled back slightly so headers fit on single rows safely */
+  }
+
+  h1.agreement_title {
+    font-size: 1.8rem;
+  }
+
+  p.userName {
+    font-size: 1.8rem;
+  }
+
+  div.deco {
+    letter-spacing: 0.8rem; 
+  }
+
+  /* Optimized terms list sizing so text flows beautifully on standard phone viewports */
+  li.term {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  p.conditions {
+    line-height: 1.3rem;
+  }
+
+  div.show_sec p, p.m1 {
+    font-size: 1.4rem;
+  }
+
+  button.enter_room {
+    font-size: 1.4rem;
+    padding: 1rem 20px;
+  }
+}
