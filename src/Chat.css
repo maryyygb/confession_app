@@ -8,15 +8,13 @@
 
 body {
   background: black;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 100vh;
   width: 100%;
-  overflow: hidden;
-
+  /* Removed overflow: hidden so users can scroll if your content grows taller than a tiny phone screen */
+  overflow-x: hidden; 
   font-family: "Cormorant Garamond", Georgia, serif;
 }
 
@@ -27,100 +25,67 @@ div.orbs {
   width: 100%;
   height: 100vh;
   z-index: -1;
-
 }
 
+/* --- ORBS SECTION --- 
+   Using max() ensures orbs scale down nicely on tiny screens instead of staying massive */
 div.orb1 {
-  width: 250px;
-  height: 250px;
+  width: max(150px, 20vw);
+  height: max(150px, 20vw);
   background: linear-gradient(red, orange);
-  border-radius: 20rem;
-
+  border-radius: 50%;
   position: absolute;
-  top: -5rem;
-  right: -5rem;
-  filter: blur(15rem)
+  top: -2rem;
+  right: -2rem;
+  filter: blur(8rem);
 }
 
 div.orb4 {
-  width: 190px;
-  height: 190px;
+  width: max(120px, 15vw);
+  height: max(120px, 15vw);
   background: linear-gradient(blue, violet);
-  border-radius: 20rem;
-
+  border-radius: 50%;
   position: absolute;
-  top: -5rem;
-  right: 20rem;
-  filter: blur(13rem)
-
+  top: -2rem;
+  right: 10rem;
+  filter: blur(7rem);
 }
 
 div.orb2 {
-  width: 250px;
-  height: 250px;
+  width: max(150px, 20vw);
+  height: max(150px, 20vw);
   background: linear-gradient(red, orange);
-  border-radius: 20rem;
-
+  border-radius: 50%;
   position: absolute;
-  top: 600px;
-  right: 500px;
-
-  filter: blur(15rem)
+  bottom: 10%;
+  left: 10%;
+  filter: blur(8rem);
 }
 
 div.orb3 {
-  width: 190px;
-  height: 190px;
+  width: max(120px, 15vw);
+  height: max(120px, 15vw);
   background: linear-gradient(violet, blue);
-  border-radius: 20rem;
-
+  border-radius: 50%;
   position: absolute;
-  top: 600px;
-  right: 90px;
-
-  filter: blur(13rem)
+  bottom: 15%;
+  right: 10%;
+  filter: blur(7rem);
 }
 
-div.orb5 {
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(violet, blue);
-  border-radius: 20rem;
-
-  position: absolute;
-  bottom: 38rem;
-  right: -59rem;
-
-  filter: blur(11rem)
+/* Hidden elements that shoot way off-screen cause horizontal layout breaks on mobile */
+div.orb5, div.orb6 {
+  display: none;
 }
 
-div.orb6 {
-  width: 195px;
-  height: 195px;
-  background: linear-gradient(blue, violet);
-  border-radius: 20rem;
-
-  position: absolute;
-  top: 0px;
-  right: 90rem;
-
-  filter: blur(13rem)
-}
-
-/* div.container::before {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 50vh;
-  border: linear-gradient(to-left, white, gray);
-} */
-
+/* --- BASE CONTAINERS --- */
 div.container {
   background: rgba(136, 43, 43, 0.205);
-  width: 600px;
-  height: 550px;
+  width: 90%;            /* Uses fluid width for mobile safety */
+  max-width: 600px;      /* Caps width on desktop to your original design */
+  height: auto;          /* Allows container to expand dynamically with content */
+  min-height: 550px;
   border-radius: 1rem;
-
   position: relative;
   color: #756666;
 }
@@ -130,13 +95,12 @@ div.card {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   height: 100%;
 }
 
 div.deco {
   margin-top: 2rem;
-  letter-spacing: 1.9rem;
+  letter-spacing: 1rem;  /* Tightened slightly for small mobile screens */
   font-size: 1.1rem;
 }
 
@@ -145,6 +109,7 @@ div.greetings {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 h1.greeting-message {
@@ -153,13 +118,15 @@ h1.greeting-message {
   font-size: 3rem;
   letter-spacing: 2px;
   font-weight: 500;
+  text-align: center;
 }
 
 p.askingName {
   font-size: 1.2rem;
   margin-top: 2rem;
   font-family: Arial, Helvetica, sans-serif;
-  width: 350px;
+  width: 100%;          /* Changed from 350px fixed to fluid container padding */
+  max-width: 350px;
   text-align: center;
   letter-spacing: 2px;
 }
@@ -201,23 +168,16 @@ button.not_verified {
   cursor: not-allowed;
 }
 
-p.not_error {
+p.not_error, p.yes_error {
   margin-top: 1rem;
   font-size: 1.1rem;
   color: #f5f5f575;
   font-style: italic;
   letter-spacing: 2px;
+  text-align: center;
 }
 
-p.yes_error {
-  margin-top: 1rem;
-  font-size: 1.2rem;
-  color: #f5f5f575;
-  font-style: italic;
-  letter-spacing: 2px;
-}
-
-/* AGREEMENT PAGE */
+/* --- AGREEMENT PAGE --- */
 div.card_ag {
   display: flex;
   flex-direction: column;
@@ -225,12 +185,12 @@ div.card_ag {
   align-items: center;
   height: 100%;
   border-radius: 1.1rem;
+  padding: 1rem;
 }
 
 div.deco_ag {
   margin-top: 2rem;
   text-align: center;
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -244,7 +204,9 @@ h1.agreement_title {
 }
 
 div.ag_con {
-  height: 810px;
+  height: auto;
+  min-height: 600px;     /* Changed from rigid 810px to accommodate variable heights */
+  padding-bottom: 2rem;
 }
 
 p.userName {
@@ -254,53 +216,39 @@ p.userName {
   color: rgba(146, 21, 21, 0.938);
 }
 
-p.ag_reminder_one {
+p.ag_reminder_one, p.ag_reminder_two {
   font-size: 1.1rem;
-  text-align: justify;
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   font-family: Arial, Helvetica, sans-serif;
   letter-spacing: 1px;
+  padding: 0 1rem;
 }
 
-p.ag_reminder_two {
-  font-size: 1.1rem;
-  text-align: justify;
-  text-align: center;
-  margin-top: .5rem;
-  margin-bottom: 2rem;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
-}
-
-/* TERMS */
-
+/* --- TERMS --- */
 ul.terms {
   font-family: Arial, Helvetica, sans-serif;
-  text-align: justify;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
   margin-top: 1.2rem;
+  width: 100%;
 }
 
 li.term {
   font-size: 1.1rem;
   letter-spacing: 1px;
-  width: 80%;
+  width: 90%;            /* Expanded marginally for better touch interaction targets */
   height: auto;
   list-style: none;
-
   border: 1px solid #f5f5f51a;
   border-radius: 10px;
-  padding: 1rem 1.5rem 1rem 1rem;
-
+  padding: 1rem;
   display: flex;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start; /* Kept checkbox left-aligned relative to layout */
   align-items: center;
   flex-shrink: 0;
   cursor: pointer;
@@ -330,6 +278,7 @@ p.checkbox {
 
 p.conditions {
   line-height: 1.5rem;
+  text-align: left;
 }
 
 button.verify_btn_ag {
@@ -338,7 +287,7 @@ button.verify_btn_ag {
   border-radius: .8rem;
   color: gray;
   margin-top: 1.5rem;
-  width: 80%;
+  width: 90%;
   border: .5px solid #49191936;
 }
 
@@ -351,15 +300,15 @@ button.verify_btn_ag {
   border: 1px solid #b9b9b91c;
 }
 
-/* REMINDER PAGE*/
+/* --- REMINDER PAGE --- */
 div.reminder_con {
   color: #f5f5f59d;
   font-size: 1.5rem;
   font-style: italic;
   letter-spacing: 2px;
-
   text-align: center;
-  position: relative
+  position: relative;
+  width: 90%;
 }
 
 div.my_notes {
@@ -367,15 +316,16 @@ div.my_notes {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-div.show_first {
+  position: relative;
+  min-height: 250px;
   text-align: center;
+  width: 100%;
 }
 
 h1.header {
   margin-top: 2rem;
-  width: 600px;
+  width: 100%;          /* Changed from 600px fixed to dynamic flow scaling */
+  max-width: 600px;
 }
 
 p.m1 {
@@ -387,7 +337,8 @@ p.m1 {
 
 div.show_sec p {
   text-align: center;
-  width: 650px;
+  width: 100%;          /* Changed from 650px fixed */
+  max-width: 650px;
   font-size: 2rem;
   letter-spacing: 1px;
   margin-top: 2rem;
@@ -397,35 +348,26 @@ div.show_sec p {
   transition: all .3s ease-in-out;
 }
 
-/* Core alignment container wrapper */
-.my_notes {
-  position: relative;
-  min-height: 250px; /* Reserves screen area so layout doesn't crash */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
 .show_sec {
   font-size: 2.5rem;
   letter-spacing: 2px;
   font-weight: 600;
+  width: 100%;
 }
 
-/* Forces text sections to cleanly overlay in the center */
 .show_first, .show_sec {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 0 1rem;
 }
 
-/* Core animation transition properties */
 .note-fade {
-  width: 600px;
+  width: 100%;          /* Changed from 600px fixed */
+  max-width: 600px;
   opacity: 0;
-  transform: translateY(15px);
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
               transform 0.8s cubic-bezier(0.4, 0, 0.2, 1),
               visibility 0.8s;
@@ -434,17 +376,16 @@ div.show_sec p {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) translateY(15px);
-  white-space: normal; /* Permits text rows to wrap safely naturally */
+  white-space: normal;
+  padding: 0 1rem;
 }
 
-/* Active State: Slides softly up into clear focus */
 .note-fade.visible {
   opacity: 1;
   transform: translate(-50%, -50%) translateY(0);
   visibility: visible;
 }
 
-/* Exit State: Drifts softly upwards out of sight */
 .note-fade.hidden {
   opacity: 0;
   transform: translate(-50%, -50%) translateY(-15px);
@@ -452,50 +393,55 @@ div.show_sec p {
 }
 
 button.enter_room {
-  background-color: rgb(141, 74, 74); /* Example pink tone; customize to match theme palette */
+  background-color: rgb(141, 74, 74);
   color: white;
   border: none;
-  padding: 1.5rem 30px;
-  font-size: 2rem;
+  padding: 1.2rem 30px;
+  font-size: 1.8rem;
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(255, 75, 114, 0.3);
-  width: 300px;
+  width: 100%;          /* Changed to safely scale within parent constraints */
+  max-width: 300px;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   letter-spacing: 2px;
   font-weight: 600;
 }
 
-/* Optional hover polish glow */
 button.enter_room:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: scale(1.05); /* Fixed the offset collision with translate center context */
   box-shadow: 0 6px 20px rgba(255, 75, 114, 0.5);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* CHAT ROOM */
-
+/* --- CHAT ROOM CONTAINER --- */
 div.chatroom_box {
-  max-width: 70%;
-  min-width: 800px;
-  height: 1000px;
+  width: 95%;            /* Fluid window configuration for small viewports */
+  max-width: 800px;      /* Desktop ceiling cap matching original layout targets */
+  min-width: 0;          /* REMOVED min-width: 800px; which completely broke phone viewports */
+  height: 90vh;          /* Changed from fixed 1000px to adapt smoothly to screen heights */
   background-color: rgba(141, 74, 74, 0.137);
   border-radius: 1rem;
-
+  display: flex;
+  flex-direction: column; /* Organizes layout layers natively */
   position: relative;
   box-shadow: 1px 1px 18px hsla(0, 0%, 100%, 0.212);
+  overflow: hidden;
 }
 
 div.croom_orbs {
   position: absolute;
-  height: 1000px;
+  height: 100%;
+  width: 100%;
   border-radius: 1rem;
+  z-index: -1;
 }
 
 nav {
   padding: 1rem;
   box-shadow: 1px 1px 18px hsla(0, 0%, 37%, 0.212);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 nav > ul {
@@ -514,11 +460,11 @@ li.nav-items:first-child {
   background: rgba(36, 7, 7, 0.767);
   border: .5px solid hsla(0, 88%, 23%, 0.795);
   border-radius: 50%;
-  padding: .9rem 1.2rem;
+  padding: .6rem .9rem;  /* Streamlined sizes for micro header real estate */
 }
 
 p.me {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 600;
   letter-spacing: 1.5px;
@@ -526,79 +472,67 @@ p.me {
 }
 
 p.my_status {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
   font-style: italic;
   color: hsla(0, 47%, 39%, 0.788);
 }
 
-/* BODY */
-
+/* --- CHAT BODY --- */
 div.body {
-  height: 80%;
   flex-grow: 1;
-  padding: 2rem;
-  height: 830px;
-  overflow: auto;
+  padding: 1rem;        /* Reduced padding targets to buy space for bubbles */
+  height: calc(100% - 140px); /* Let it fill the box instead of using raw 830px */
+  overflow-y: auto;
+  flex-direction: column-reverse;
 }
 
 .body::-webkit-scrollbar {
-  width: 1px;
+  width: 2px;
 }
 
 ul.msg_container {
+  height: calc(100% - 140px); /* Let it fill the box instead of using raw 830px */
+  overflow-y: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1rem;
-  /* align-items: end; */
-  
+}
+
+li.his_msg, li.her_msg {
+  width: fit-content;
+  max-width: 85%;       /* Gives bubbles more structural flex room on phones */
+  padding: 0.8rem 1.2rem;
+  border-radius: 1.5rem;
+  list-style: none;
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0.5px;
+  font-size: 1rem;      /* Softly dropped text sizes for small displays */
+  border: .5px solid hsla(0, 56%, 28%, 0.795);
+  line-height: 1.4rem;
 }
 
 li.his_msg {
   align-self: flex-end;
-
-  width: fit-content;
-  max-width: 500px;
-  padding: 1rem;
-  border-radius: 2rem;
   background: hsla(0, 45%, 24%, 0.349);
-  /* color: hsla(0, 0%, 96%, 0.836); */
   color: rgba(223, 196, 196, 0.767);
-  list-style: none;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
-  font-size: 1.1rem; 
-    border: .5px solid hsla(0, 56%, 28%, 0.795);
-  line-height: 1.5rem;
+  border-bottom-right-radius: 0.3rem; /* Stylized modern tail design detail */
 }
 
 li.her_msg {
   align-self: flex-start;
-
-  width: fit-content;
-  max-width: 500px;
-  padding: 1rem;
-  border-radius: 2rem;
-  background: hsla(0, 45%, 24%, 0.349);
-  /* color: hsla(0, 0%, 96%, 0.836); */
+  background: hsla(0, 30%, 15%, 0.5);
   color: rgba(223, 196, 196, 0.767);
-  list-style: none;
-  font-family: Arial, Helvetica, sans-serif;
-  letter-spacing: 1px;
-  font-size: 1.1rem; 
-  border: .5px solid hsla(0, 56%, 28%, 0.795);
-  line-height: 1.5rem;
+  border-bottom-left-radius: 0.3rem;
 }
 
-
-/* FOOTER */
-
+/* --- FOOTER INPUT BAR --- */
 footer {
-  position: absolute;
+  position: relative;   /* Changed from absolute so it locks neatly to container framework grids */
   bottom: 0;
   backdrop-filter: blur(10px);
-
+  background: rgba(15, 5, 5, 0.8);
   display: flex;
   align-items: center;
   gap: .5rem;
@@ -608,54 +542,88 @@ footer {
 
 input.chat_input {
   border-radius: 2rem;
-  font-size: 1.2rem;
+  font-size: 1rem;      /* Changed from 1.2rem to stop mobile Safari from auto-zooming window */
   outline: none;
   border: none;
-  padding: 1.2rem;
+  padding: 0.8rem 1.2rem;
   color: rgba(114, 76, 76, 0.856);
   background: rgba(36, 7, 7, 0.767);
-    border: .5px solid hsla(0, 83%, 19%, 0.795);
+  border: .5px solid hsla(0, 83%, 19%, 0.795);
   flex-grow: 1;
 }
 
 input.chat_input:focus {
   background: rgba(53, 11, 11, 0.767);
-  /* color: rgba(121, 78, 78, 0.856); */
-
   color: rgba(223, 196, 196, 0.767);
-
 }
 
 input.chat_input::placeholder {
   color: rgba(131, 93, 93, 0.726);
+}
 
+button.chat_send_disabled, button.chat_send {
+  padding: 0.8rem 1.2rem; /* Normalized button tracking space constraints */
+  font-size: 1.1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: .5px solid hsla(0, 83%, 19%, 0.795);
+  font-weight: 800;
 }
 
 button.chat_send_disabled {
-  padding: .8rem 1.45rem 1.2rem 1.45rem;
-  font-size: 1.2rem;
-  border-radius: 100%;
-  cursor: pointer;
   background: rgba(36, 7, 7, 0.767);
-  border: .5px solid hsla(0, 80%, 12%, 0.795);
-  font-weight: 800;
-  /* cursor: not-allowed; */
+  color: rgba(128, 128, 128, 0.4);
 }
 
 button.chat_send {
-  padding: .8rem 1.45rem 1.2rem 1.45rem;
-  font-size: 1.2rem;
-  border-radius: 100%;
   background: rgba(53, 11, 11, 0.767);
-  cursor: pointer;
-  /* background: rgba(36, 7, 7, 0.767); */
-  border: .5px solid hsla(0, 83%, 19%, 0.795);
   color: rgb(189, 120, 120);
-  font-weight: 800;
 }
 
 button.chat_send:hover {
   background: rgba(61, 13, 13, 0.767);
   border: .5px solid hsla(0, 88%, 23%, 0.795);
   color: #f5f5f5;
+}
+
+/* ==========================================================================
+   MOBILE MEDIA QUERY
+   This layer activates automatically on devices with screens 480px wide or less
+   ========================================================================== */
+@media screen and (max-width: 480px) {
+  h1.greeting-message {
+    font-size: 2.2rem;  /* Scaled back slightly so headers fit on single rows safely */
+  }
+
+  h1.agreement_title {
+    font-size: 1.8rem;
+  }
+
+  p.userName {
+    font-size: 1.8rem;
+  }
+
+  div.deco {
+    letter-spacing: 0.8rem; 
+  }
+
+  /* Optimized terms list sizing so text flows beautifully on standard phone viewports */
+  li.term {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.8rem;
+  }
+
+  p.conditions {
+    line-height: 1.3rem;
+  }
+
+  div.show_sec p, p.m1 {
+    font-size: 1.4rem;
+  }
+
+  button.enter_room {
+    font-size: 1.4rem;
+    padding: 1rem 20px;
+  }
 }
