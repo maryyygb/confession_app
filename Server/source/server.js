@@ -1,12 +1,17 @@
 import express from "express";
 import chatsRoutes from "./routes/chatsRoutes.js";
+import { connectDB } from "./config/db.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5001;
 
 app.use("/api/chats", chatsRoutes);
 
-app.listen(5001, () => {
-  console.log("Server started on PORT: 5001");
-});
+connectDB();
 
-// mongodb+srv://maryyygb:M@ryG120805@app.vq1wpx2.mongodb.net/?appName=app
+app.listen(PORT, () => {
+  console.log("Server started on PORT:", PORT);
+});
