@@ -485,6 +485,7 @@ div.body {
   padding: 1rem;        /* Reduced padding targets to buy space for bubbles */
   height: calc(100% - 140px); /* Let it fill the box instead of using raw 830px */
   overflow-y: auto;
+  flex-direction: column-reverse;
 }
 
 .body::-webkit-scrollbar {
@@ -492,8 +493,10 @@ div.body {
 }
 
 ul.msg_container {
+  height: calc(100% - 140px); /* Let it fill the box instead of using raw 830px */
+  overflow-y: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   gap: 1rem;
 }
 

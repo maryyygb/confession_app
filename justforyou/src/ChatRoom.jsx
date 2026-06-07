@@ -1,17 +1,37 @@
-import { useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 
 const ChatRoom = () => {
 
-  // const [messages, setMessages] = useState(["Hi, there", "Hi, there"]);
   const [m, setM] = useState([
                   {id: 0, message: "Hi, there!"},
                   {id: 1, message: "What's up?"}, 
-                  {id: 0, message: "What are you doing?"}, {id: 0, message: "Are you free tonight?"}, {id: 0, message: "I was just asking, haha"}])
+                  {id: 0, message: "What are you doing?"}, 
+                  {id: 0, message: "Are you free tonight?"}, 
+                  {id: 0, message: "I was just asking, haha"},
+                  {id: 1, message: "What's up?"},
+                  {id: 1, message: "What's up?"},
+                  {id: 1, message: "What's up?"},
+                  {id: 1, message: "What's up?"},
+                  {id: 1, message: "What's up?"},
+                  {id: 0, message: "What's up?"},
+                  {id: 0, message: "What's up?"},
+                  {id: 0, message: "What's up?"},
+                ])
   const [msg, setMsg] = useState("");
 
+  // FOR THE MESSAGES TO SCROLL AUTOMATICALLY AT THE BOTTOM TO SHOW LATEST MESSAGES
 
+ // 2. Create a reference for the scrollable body container
+  const chatBodyRef = useRef(null);
+
+  // 3. Automatically scroll to the bottom when messages update
+  useEffect(() => {
+    if (chatBodyRef.current) {
+      chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+    }
+  }, [m]); // Runs every time the 'm' array changes
 
   useGSAP(() => {
     const tl = gsap.timeline();
@@ -21,6 +41,20 @@ const ChatRoom = () => {
       opacity: 0,
       duration: 2,
       ease: 'power1'
+    })
+
+    tl.from('.msg_container', {
+      opacity: 0,
+      duration: 1,
+      y: 300,
+      ease: 'power1'
+    })
+
+    tl.from('.input_message', {
+      opacity: 0,
+      duration: 1,
+      ease: 'power1',
+      y: 300
     })
 
   })
@@ -57,9 +91,8 @@ const ChatRoom = () => {
           </ul>
         </nav>
 
-        <div className="body">
+        <div className="body" ref={chatBodyRef}>
           <ul className="msg_container">
-            {/* {messages.map((msg, id) => <li className="his_msg" key={id}>{msg}</li>)} */}
             {
               m.map((m, i) => {
                 if(m.id == 1) {
@@ -70,6 +103,7 @@ const ChatRoom = () => {
               })
             }
           </ul>
+          <div id="anchor"></div>
         </div>
 
         <footer className="input_message">
