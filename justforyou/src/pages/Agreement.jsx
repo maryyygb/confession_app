@@ -45,6 +45,9 @@ function Agreement() {
 
   return (
     <div className="container ag_con">
+        <div className="warning-for-phone-use">
+            <h1>Please use the web version to view the actual web page. This site is currently not available to view in small screen devices. Thank you!</h1>
+        </div>
         <div className="orbs">
             <div className="orb1"></div>
             <div className="orb2"></div>

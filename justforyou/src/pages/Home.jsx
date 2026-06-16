@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
-import React, {useState, useEffect, createContext} from 'react'
+import React, {useState, useEffect, createContext} from 'react';
+
 
 function Home() {
 
@@ -24,6 +25,9 @@ function Home() {
 
   return (
     <div className="container">
+        <div className="warning-for-phone-use">
+            <h1>Please use the web version to view the actual web page. This site is currently not available to view in small screen devices. Thank you!</h1>
+        </div>
         <div className="orbs">
             <div className="orb1"></div>
             <div className="orb2"></div>

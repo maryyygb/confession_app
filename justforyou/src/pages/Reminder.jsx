@@ -10,15 +10,15 @@ function Reminder() {
     const [notes] = useState([
         "SO, HI!", 
         "just in case you're wondering,", 
-        "i spent weeks creating this app and i hope this doesn't make you feel uncomfy", 
-        "i was actually learning a tech stack which is the backend of this app (MERN STACK) and decided to practice by creating this special app.", 
-        "hahahaha, i actually have no plans talaga na gumawa ng ganito kasi bakit nga ba, di ba?", 
-        "hmmmm...secret! hahahaha", 
-        "malalaman mo rin in...",
-        "three...", 
-        "two...", 
-        "one...", 
-        "pindutin mo agad 'yong button kasi mawawala agad 'yan, parang feelings ko lang. charizz",
+        "i spent weeks in creating this web app and it is because...", 
+        "i am learning a tech stack which is the backend of this app (MERN STACK), yeahhhhh....", 
+        "and i decided to practice by creating this SPECIAL app", 
+        "hahaha, weird isn't it? there's so many app i could think of doing", 
+        "why a confession app?",
+        "ask myself from weeks ago", 
+        "i was not thinking straight that time but i can't just abandon this without finishing", 
+        "so...that's it. just a short do-you-know stuff. okay, are you ready now?", 
+        "there will be a button after this. click it right away because it will disappear immediately. R U READY?",
         "i'm ready"
     ])
 
@@ -49,7 +49,11 @@ function Reminder() {
         }
 
   return (
+    
     <div className="reminder_con">
+        <div className="warning-for-phone-use">
+            <h1>Please use the web version to view the actual web page. This site is currently not available to view in small screen devices. Thank you!</h1>
+        </div>
         <div className="orbs rem_obs">
             <div className="orb1"></div>
             <div className="orb2"></div>
@@ -74,7 +78,7 @@ function Reminder() {
             <p className="pnote1">{renderNote(3)}</p>
             <p className="pnote2">{renderNote(4)}</p>
             <p className="pnote3">{renderNote(5)}</p>
-            <p className="pnote4">{renderNote(6)}</p>
+            <p className="ml">{renderNote(6)}</p>
             <p className="note5">{renderNote(7)}</p>
             <p className="note6">{renderNote(8)}</p>
             <p className="note6">{renderNote(9)}</p>

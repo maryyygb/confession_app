@@ -64,6 +64,9 @@ const ChatRoom = () => {
 
   return (
     <div className="chatroom_box">
+      <div className="warning-for-phone-use">
+            <h1>Please use the web version to view the actual web page. This site is currently not available to view in small screen devices. Thank you!</h1>
+        </div>
       <div className="orbs rem_obs croom_orbs">
             <div className="orb1"></div>
             <div className="orb2"></div>
