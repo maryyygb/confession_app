@@ -10,14 +10,6 @@ const ChatRoom = () => {
                   {id: 0, message: "What are you doing?"}, 
                   {id: 0, message: "Are you free tonight?"}, 
                   {id: 0, message: "I was just asking, haha"},
-                  {id: 1, message: "What's up?"},
-                  {id: 1, message: "What's up?"},
-                  {id: 1, message: "What's up?"},
-                  {id: 1, message: "What's up?"},
-                  {id: 1, message: "What's up?"},
-                  {id: 0, message: "What's up?"},
-                  {id: 0, message: "What's up?"},
-                  {id: 0, message: "What's up?"},
                 ])
   const [msg, setMsg] = useState("");
 
