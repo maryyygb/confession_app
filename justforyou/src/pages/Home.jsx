@@ -1,5 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect, createContext} from 'react';
+import { Link } from 'react-router';
+
+import { useGSAP } from '@gsap/react';
+import gsap from "gsap";
 
 
 function Home() {
@@ -23,6 +27,19 @@ function Home() {
         console.log("This one says it match the name")
     }
 
+
+    useGSAP(() => {
+        gsap.fromTo(".container", {
+            opacity: 0,
+            ease: "power1.in",
+            duration: 2,
+        }, {
+            opacity: 1,
+            ease: "power1.out",
+            duration: 2
+        })
+    })
+
   return (
     <div className="container">
         <div className="warning-for-phone-use">
@@ -45,6 +62,7 @@ function Home() {
 
                 <input className="name_input" type="text" placeholder="type your name here" value={userName} onChange={handleVerification} />
 
+                <Link to={`/agreement`}>
                 <button
                     className={`verify_btn ${access ? 'verified' : 'not_verified'}`}
                     disabled={!access}
@@ -52,6 +70,8 @@ function Home() {
                 >
                     continue →
                 </button>
+                </Link>
+                
 
                 {!access ? <p className="not_error">Type a correct name to be able to click the button.</p> : <p className="yes_error">Great! You are him!</p>}
                 

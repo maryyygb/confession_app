@@ -2,6 +2,9 @@
 import {useEffect, useState} from 'react'
 import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+
 
 function Agreement() {
     
@@ -42,6 +45,18 @@ function Agreement() {
     const just = () => {
         console.log("This one says it match the name")
     }
+
+    useGSAP(() => {
+        gsap.fromTo(".container", {
+            opacity: 0,
+            ease: "power1.in",
+            duration: 2,
+        }, {
+            opacity: 1,
+            ease: "power1.out",
+            duration: 2
+        })
+    })
 
   return (
     <div className="container ag_con">
