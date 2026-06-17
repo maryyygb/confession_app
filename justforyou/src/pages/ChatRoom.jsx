@@ -1,8 +1,29 @@
 import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import axios from "axios";
 
 const ChatRoom = () => {
+
+  // Fetching Datas from Database
+  const [chats, setChats] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        const res = await axios.get("http://localhost:5001/api/chats");
+        console.log(res.data);
+        setChats(res.data);
+      } catch (error) {
+        console.log("Error fetching chats", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchChats();
+  }, [])
 
   const [m, setM] = useState([
                   {id: 0, message: "Hi, there!"},
@@ -87,8 +108,35 @@ const ChatRoom = () => {
         </nav>
 
         <div className="body" ref={chatBodyRef}>
-          <ul className="msg_container">
-            {
+
+          {loading && (
+          <div className="text-center text-2xl text-[#f5f5f5] py-4">
+            Loading chats...
+          </div>
+        )}
+
+        {/* 4. Active, uncommented, and fully validated safe mapping array block */}
+        {!loading && chats.length > 0 && (
+          <ul className="msg_container flex flex-col gap-4">
+            {chats.map((chat) => (
+              <li 
+                className={chat.point_type === 1 ? "his_msg" : "her_msg"} 
+                key={chat._id}
+              >
+                {chat.content}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {!loading && chats.length === 0 && (
+          <div className="text-center text-[#f5f5f5]/50 italic mt-10">
+            No conversation history found.
+          </div>
+        )}
+
+          {/* // The test code and should be inside the ul tag */}
+          {/* {
               m.map((m, i) => {
                 if(m.id == 1) {
                   return <li className="his_msg" key={i}>{m.message}</li>
@@ -96,8 +144,9 @@ const ChatRoom = () => {
                   return <li className="her_msg" key={i}>{m.message}</li>
                 }
               })
-            }
-          </ul>
+            } */}
+
+          {loading && <div className="text-center text-2xl text-[#f5f5f5] text-primary py-1">Loading chats...</div>}
           <div id="anchor"></div>
         </div>
 

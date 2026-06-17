@@ -1,8 +1,10 @@
 import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
+
+import rateLimiter from "./middleware/rateLimiter.js";
 import chatsRoutes from "./routes/chatsRoutes.js";
 import { connectDB } from "./config/db.js";
-import dotenv from "dotenv";
-import rateLimiter from "./middleware/rateLimiter.js";
 
 dotenv.config();
 
@@ -16,6 +18,9 @@ app.use((req, res, next) => {
 });
 
 // middleware
+app.use(cors({
+  origin: "http://localhost:5173",
+}));
 app.use(express.json()); //this middleware will parse the JSON bodies: req.body
 app.use(rateLimiter);
 
