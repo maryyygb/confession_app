@@ -4,6 +4,7 @@ import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { Link } from 'react-router';
 
 
 function Agreement() {
@@ -103,6 +104,7 @@ function Agreement() {
                 
             </ul>
 
+                <Link to={`/reminder`}>
             <button
                     className={`verify_btn_ag ${access ? 'verified' : 'not_verified'}`}
                     disabled={!access}
@@ -110,6 +112,7 @@ function Agreement() {
                 >
                     {access ? "i agree — show me →" : "you must agree to continue"}
                 </button>
+                </Link>
         </div>
     </div>
   )

@@ -462,7 +462,7 @@ p.m1 {
 
 div.show_sec p {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   letter-spacing: 1px;
   margin-top: 2rem;
 }
@@ -689,9 +689,10 @@ input.chat_input {
   outline: none;
   border: none;
   padding: 1.2rem;
-  color: rgba(114, 76, 76, 0.856);
-  background: rgba(36, 7, 7, 0.767);
-    border: .5px solid hsla(0, 83%, 19%, 0.795);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: rgba(134, 98, 98, 0.856);
+  background: rgba(48, 15, 15, 0.767);
+    border: .5px solid hsla(0, 36%, 35%, 0.795);
   flex-grow: 1;
 }
 
@@ -723,11 +724,11 @@ button.chat_send {
   padding: .8rem 1.45rem 1.2rem 1.45rem;
   font-size: 1.2rem;
   border-radius: 100%;
-  background: rgba(53, 11, 11, 0.767);
   cursor: pointer;
   /* background: rgba(36, 7, 7, 0.767); */
-  border: .5px solid hsla(0, 83%, 19%, 0.795);
-  color: rgb(189, 120, 120);
+  color: rgba(134, 98, 98, 0.856);
+  background: rgba(48, 15, 15, 0.767);
+    border: .5px solid hsla(0, 34%, 39%, 0.795);
   font-weight: 800;
 }
 

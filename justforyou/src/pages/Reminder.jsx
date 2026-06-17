@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router';
 
 function Reminder() {
 
@@ -8,24 +9,24 @@ function Reminder() {
     const [currentNoteIndex, setCurrentNoteIndex] = useState(0);
 
     const [notes] = useState([
-        "SO, HI!", 
-        "just in case you're wondering,", 
-        "i spent weeks in creating this web app and it is because...", 
-        "i am learning a tech stack which is the backend of this app (MERN STACK), yeahhhhh....", 
-        "and i decided to practice by creating this SPECIAL app", 
-        "hahaha, weird isn't it? there's so many app i could think of doing", 
-        "why a confession app?",
-        "ask myself from weeks ago", 
-        "i was not thinking straight that time but i can't just abandon this without finishing", 
-        "so...that's it. just a short do-you-know stuff. okay, are you ready now?", 
-        "there will be a button after this. click it right away because it will disappear immediately. R U READY?",
-        "i'm ready"
-    ])
+        "SO, HI! Just in case you're wondering...",
+        "I've spent the last few weeks building this entire web app from scratch.",
+        "I was trying to learn a new backend tech stack (MERN stack, if you're curious, haha)...",
+        "And out of all the sample projects I could have chosen to build...",
+        "My mind just kept drifting back to you.",
+        "So, why a confession app?",
+        "Maybe I wasn't thinking straight weeks ago...",
+        "Or maybe, deep down, this was the only project I actually cared about finishing.",
+        "And now that it's done, there's no turning back.",
+        "The next screen has a button that will lead you to a chatroom.",
+        "It only appears once and has a timelimit. Click it right away or else you'll need to refresh the page.",
+        "So... are you ready?"
+    ]);
 
         useEffect(() => {
             if (currentNoteIndex >= notes.length) return;
 
-            const readingTime = notes[currentNoteIndex].length > 20 ? 4500 : 2500;
+            const readingTime = notes[currentNoteIndex].length > 20 ? 5500 : 3500;
 
             const timer = setTimeout(() => {
                 setCurrentNoteIndex((prev) => prev + 1);
@@ -85,7 +86,9 @@ function Reminder() {
             <p className="note6">{renderNote(10)}</p>
 
 
+            <Link to={`/chatroom`}>
             <button className={`enter_room note-fade ${currentNoteIndex === 11 ? 'visible' : 'hidden'} `} onClick={handleEnterRoom}>{renderNote(11)}</button>
+            </Link>
         </div>
             </div>
         

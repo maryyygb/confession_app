@@ -52,20 +52,20 @@ const ChatRoom = () => {
     tl.from(".chatroom_box", {
       y: 300,
       opacity: 0,
-      duration: 2,
+      duration: 1,
       ease: 'power1'
     })
 
     tl.from('.msg_container', {
       opacity: 0,
-      duration: 1,
+      duration: .5,
       y: 300,
       ease: 'power1'
     })
 
     tl.from('.input_message', {
       opacity: 0,
-      duration: 1,
+      duration: .5,
       ease: 'power1',
       y: 300
     })
