@@ -676,11 +676,11 @@ footer {
   bottom: 0;
   backdrop-filter: blur(10px);
 
-  display: flex;
+  /* display: flex;
   align-items: center;
   gap: .5rem;
   padding: .8rem;
-  width: 100%;
+  width: 100%; */
 }
 
 input.chat_input {

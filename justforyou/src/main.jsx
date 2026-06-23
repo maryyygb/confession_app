@@ -10,8 +10,8 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     {/* //so that we can do routing by url like once a btn is clicked, it will go to '/newpage' */}
     <BrowserRouter> 
-    <App />
     <Toaster/>
+    <App />
     </BrowserRouter>
   </StrictMode>,
 )

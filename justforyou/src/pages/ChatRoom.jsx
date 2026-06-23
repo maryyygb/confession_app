@@ -2,12 +2,18 @@ import { useRef, useEffect, useState } from 'react';
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const ChatRoom = () => {
 
   // Fetching Datas from Database
   const [chats, setChats] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Creating messages
+  const [pt, setPt] = useState(1);
+  const [message, setMessage] = useState("");
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     const fetchChats = async () => {
@@ -23,7 +29,7 @@ const ChatRoom = () => {
     }
 
     fetchChats();
-  }, [])
+  }, [chats])
 
   const [m, setM] = useState([
                   {id: 0, message: "Hi, there!"},
@@ -81,6 +87,34 @@ const ChatRoom = () => {
     // msg != "" && setMessages(m => [...m, msg])
     msg != "" && setM(m => [...m, {id: 1, message: msg}]);
     setMsg("")
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // this is to avoid the whole page refreshing when submitting form
+
+    console.log(msg);
+    if(!msg.trim()) {
+      toast.error("You should write a valid message.");
+      setMsg("");
+      return;
+    }
+
+    setLoad(true);
+    try {
+      await axios.post("http://localhost:5001/api/chats", {
+        point_type: 1,
+        content: msg,
+      })
+      toast.success("Message sent");
+    } catch (error) {
+      toast.error("Message not sent");
+      console.log(error);
+    } finally {
+      setLoad(false)
+    }
+
+    setChats((c) => [...c, msg]);
+    setMsg("");
   }
 
   return (
@@ -150,11 +184,19 @@ const ChatRoom = () => {
           <div id="anchor"></div>
         </div>
 
-        <footer className="input_message">
-          <input className="chat_input" placeholder="type your message here" type="text" value={msg} onChange={(e) => setMsg(e.target.value)}/>
-          <button className={msg != "" ? "chat_send" : "chat_send_disabled"} type="submit" onClick={() => handleSendMsg()}
-            disabled={msg == ""}
-            >↑</button>
+        <footer className="input_message w-[100%] p-[1rem]">
+          <form className="w-[100%] flex items-center gap-[.25rem]" onSubmit={handleSubmit}>
+            <input className="chat_input grow" 
+                    placeholder="type your message here" 
+                    type="text" 
+                    value={msg} 
+                    onChange={(e) => setMsg(e.target.value)}/>
+            <button className={msg != "" ? "chat_send" : "chat_send_disabled"} 
+                    type="submit" 
+                    // onClick={() => handleSendMsg()}
+                    disabled={msg == ""}
+              >↑</button>
+          </form>
         </footer>
     </div>
   )
