@@ -176,8 +176,7 @@ const ChatRoom = () => {
                   return <li className="his_msg" key={i}>{m.message}</li>
                 } else {
                   return <li className="her_msg" key={i}>{m.message}</li>
-                }
-              })
+                }})
             } */}
 
           {loading && <div className="text-center text-2xl text-[#f5f5f5] text-primary py-1">Loading chats...</div>}
